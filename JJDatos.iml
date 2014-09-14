@@ -20,6 +20,7 @@
         <jarDirectory url="file://$USER_HOME$/Descargas/controlsfx-8.0.6" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="ojdbc6" level="project" />
   </component>
 </module>
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPane" minHeight="544.0" minWidth="702.0" prefHeight="544.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.Controller">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -44,7 +45,37 @@
           <Tab text="Tables-Data" />
             <Tab text="Diagrams">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Accordion prefHeight="582.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <panes>
+                            <TitledPane text="CPU">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <LineChart fx:id="cpu_chart" layoutX="73.0" layoutY="14.0" prefHeight="531.0" prefWidth="778.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="untitled 2">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="stpbtn" layoutX="221.0" layoutY="139.0" mnemonicParsing="false" onAction="#stupid" text="Button" />
+                                       </children></AnchorPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Configuration">

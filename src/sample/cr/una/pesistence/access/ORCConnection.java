@@ -1,8 +1,5 @@
 package sample.cr.una.pesistence.access;
 
-//import oracle.jdbc.pool.OracleDataSource;
-
-
 import java.sql.*;
 import java.util.Properties;
 
