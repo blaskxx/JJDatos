@@ -68,7 +68,7 @@
                 <TextField fx:id="user" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                 <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                 <Button mnemonicParsing="false" onAction="#goToPrincipal" prefHeight="25.0" prefWidth="92.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="--Select--" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
                 <Label text="Port" GridPane.rowIndex="3">
                     <font>
                         <Font size="21.0" />

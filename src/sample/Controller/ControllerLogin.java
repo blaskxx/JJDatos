@@ -1,8 +1,11 @@
 package sample.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.controlsfx.dialog.Dialogs;
@@ -31,8 +34,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
     @FXML
     private TextField serviceName;
 
-    //@FXML
-    //LineChart<String,Number> cpu_chart;
+    @FXML
+    private ComboBox<String> comboBox;
+
+    ObservableList<String> list= FXCollections.observableArrayList("sysdba","sysoper");
+
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController=screenPage;
@@ -40,7 +46,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        comboBox.setItems(list);
     }
 
     @FXML
@@ -97,7 +103,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         if(!user.getText().isEmpty()&&!password.getText().isEmpty()&&!url.getText().isEmpty()&&!port.getText().isEmpty()
                 &&!serviceName.getText().isEmpty()){
             ORCConnection connection = ORCConnection.Instance();
-            connection.initializeConnection(user.getText(), "sysdba", password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), false);
+            connection.initializeConnection(user.getText(), comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), false);
             /*cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
             cpu_chart.getYAxis().setAutoRanging(false);*/
             return true;
