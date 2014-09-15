@@ -23,9 +23,16 @@ public class TableSpaceAccess {
         if(ORCConnection.Instance().isInitialized()) {
             ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE, END_TIME FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
             while (rs.next()) {
-                String tbn = rs.getString(1);
-                float f = rs.getBigDecimal(2).floatValue();
-
+                String name = rs.getString(1);
+                float used = rs.getBigDecimal(2).floatValue();
+                float free = rs.getBigDecimal(3).floatValue();
+                String file = rs.getString(4);
+                Boolean auto = rs.getString(5).equals("YES");
+                float max = rs.getBigDecimal(6).floatValue();
+                float increment = rs.getBigDecimal(7).floatValue();
+                float total = rs.getBigDecimal(8).floatValue();
+                float pctFree = rs.getBigDecimal(9).floatValue();
+                TableSpace tbs = new TableSpace(name,file,auto,total,max,used,free,increment,pctFree);
             }
             return null;
         }

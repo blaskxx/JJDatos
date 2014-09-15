@@ -44,9 +44,10 @@ public class Cpu_Data {
             while (rs.next()) {
                 String v = rs.getString("VALUE");
                 f = Integer.valueOf(v);
+                if(f<=0) f = 1;
             }
             return f;
         }
-        return 0;
+        return 1;
     }
 }
