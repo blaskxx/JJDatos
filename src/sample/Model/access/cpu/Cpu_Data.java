@@ -18,7 +18,9 @@ public class Cpu_Data {
         Date d = new Date(0);
         String s;
         int j = 0;
-        Pair<String,Float>[] pairs = new Pair[cpu_count()];
+        int c = cpu_count();
+        if(c<=0) c=1;
+        Pair<String,Float>[] pairs = new Pair[c];
         if(ORCConnection.Instance().isInitialized()){
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
             ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE, END_TIME FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
@@ -27,7 +29,6 @@ public class Cpu_Data {
                 f = bd.floatValue();
                 d = new Date(System.currentTimeMillis());
                 pairs[j++] =  new Pair<>(sdf.format(d),f);
-                //System.out.print(sdf.format(d)+":"+f);
             }
             return pairs;
         }
