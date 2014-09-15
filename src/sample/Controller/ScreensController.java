@@ -13,7 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import java.util.HashMap;
  *
  * @author Angie
  */
-public class ScreensController  extends StackPane {
+public class ScreensController  extends AnchorPane {
     //Holds the screens to be displayed
 
     private HashMap<String, Node> screens = new HashMap<>();
@@ -73,6 +73,10 @@ public class ScreensController  extends StackPane {
                             public void handle(ActionEvent t) {
                                 getChildren().remove(0);                    //remove the displayed screen
                                 getChildren().add(0, screens.get(name));     //add the screen
+                                setTopAnchor(getChildren().get(0),0.0);
+                                setLeftAnchor(getChildren().get(0), 0.0);
+                                setBottomAnchor(getChildren().get(0), 0.0);
+                                setRightAnchor(getChildren().get(0), 0.0);
                                 Timeline fadeIn = new Timeline(
                                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                                         new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));
@@ -84,6 +88,10 @@ public class ScreensController  extends StackPane {
             } else {
                 setOpacity(0.0);
                 getChildren().add(screens.get(name));       //no one else been displayed, then just show
+                setTopAnchor(getChildren().get(0),0.0);
+                setLeftAnchor(getChildren().get(0),0.0);
+                setBottomAnchor(getChildren().get(0),0.0);
+                setRightAnchor(getChildren().get(0),0.0);
                 Timeline fadeIn = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                         new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));

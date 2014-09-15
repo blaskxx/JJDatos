@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Casa on 13/09/2014.
@@ -103,6 +104,13 @@ public class CpuTimeSeries {
         }
     }
     public void stopThread(){
-      executor.shutdown();
+        try {
+            executor.awaitTermination(1, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            executor.shutdown();
+            e.printStackTrace();
+        }
+        executor.shutdown();
+
     }
 }

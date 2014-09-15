@@ -41,7 +41,7 @@ public class ORCConnection {
      * @param sysdba    If user is Sysdba or Sysoper
      * @return  <em>True</em> if connection success <em>False</em> otherwise
      */
-    public boolean initializeConnection(String user, String roll, String pass, String url, String service_name, int port, boolean sysdba) {
+    public boolean initializeConnection(String user, String roll, String pass, String url, String service_name, int port, boolean sysdba) throws ClassNotFoundException {
         if(initialized) close();
         this.user = user;
         this.roll = roll;
@@ -61,16 +61,14 @@ public class ORCConnection {
             connection = DriverManager.getConnection("jdbc:oracle:thin:@" + url + ":" + port + "/" + service_name, pps);
             statement = connection.createStatement();
 
-        } catch (SQLException|ClassNotFoundException e) {
-            if(e.getClass().getName().equals("ClassNotFoundException")) System.out.println("Failed to load JDBC driver for Oracle");
+        } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
             return false;
         }
         if (connection == null)
             return false;
-        initialized = true;
 
+        initialized = true;
         return  true;
     }
 
