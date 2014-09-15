@@ -25,7 +25,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ORCConnection connection = ORCConnection.Instance();
-        connection.initializeConnection("Johan", "sysdba", "root", "192.168.1.111", "XE", 1521, true);
+        connection.initializeConnection("SYSTEM", "sysdba", "root", "192.168.1.111", "XE", 1521, false);
         cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
         cpu_chart.getYAxis().setAutoRanging(false);
 

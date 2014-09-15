@@ -34,7 +34,6 @@ public class CpuTimeSeries {
 
     static {
         try {cpu_count = Cpu_Data.cpu_count();} catch (SQLException e) { e.printStackTrace();  }
-
     }
 
 
@@ -44,6 +43,7 @@ public class CpuTimeSeries {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if(cpu_count <= 0) cpu_count = 1;
         dataQArr = new ConcurrentLinkedQueue[cpu_count];
 
         for(int i = 0; i < cpu_count ; i++){
