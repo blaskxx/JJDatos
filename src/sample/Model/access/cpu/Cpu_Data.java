@@ -24,11 +24,11 @@ public class Cpu_Data {
         if(ORCConnection.Instance().isInitialized()){
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
             ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
+            d = new Date(System.currentTimeMillis());
             while (rs.next()) {
                 if(j>=c) break;
                 BigDecimal bd = rs.getBigDecimal(1);
                 f = bd.floatValue();
-                d = new Date(System.currentTimeMillis());
                 pairs[j++] =  new Pair<>(sdf.format(d),f);
             }
             //rs.close();
