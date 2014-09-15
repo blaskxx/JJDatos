@@ -10,17 +10,21 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Descargas/controlsfx-8.0.6" />
+          <root url="jar://$MODULE_DIR$/../../controlsfx-8.0.6.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Descargas/controlsfx-8.0.6" />
-        </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Descargas/controlsfx-8.0.6" recursive="false" />
-        <jarDirectory url="file://$USER_HOME$/Descargas/controlsfx-8.0.6" recursive="false" type="SOURCES" />
+        <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="ojdbc6" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../ojdbc7.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
