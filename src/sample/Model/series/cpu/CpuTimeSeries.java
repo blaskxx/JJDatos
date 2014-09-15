@@ -1,12 +1,12 @@
 package sample.Model.series.cpu;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 import javafx.util.Pair;
 import sample.Model.access.cpu.Cpu_Data;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -17,14 +17,15 @@ import java.util.concurrent.Executors;
  * Created by Casa on 13/09/2014.
  */
 public class CpuTimeSeries {
-    static int MAX = 0;
+    static int MAX = 20;
     static int cpu_count = 1;
+
     private final   ObservableList<XYChart.Series<String,Number>> d = FXCollections.observableArrayList(new ArrayList<XYChart.Series<String, Number>>());
     private static  CpuTimeSeries instance;
     private ConcurrentLinkedQueue< XYChart.Data<String, Number> > dataQArr[];
-
     private ExecutorService executor;
     private AddToQueue addToQueue;
+
 
     public static CpuTimeSeries getInstance() {
         if(instance == null) instance = new CpuTimeSeries();
