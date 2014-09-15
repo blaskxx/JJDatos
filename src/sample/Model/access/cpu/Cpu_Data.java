@@ -23,14 +23,15 @@ public class Cpu_Data {
         Pair<String,Float>[] pairs = new Pair[c];
         if(ORCConnection.Instance().isInitialized()){
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-            ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE, END_TIME FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
+            ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
             while (rs.next()) {
                 if(j>=c) break;
-                BigDecimal bd = rs.getBigDecimal("VALUE");
+                BigDecimal bd = rs.getBigDecimal(1);
                 f = bd.floatValue();
                 d = new Date(System.currentTimeMillis());
                 pairs[j++] =  new Pair<>(sdf.format(d),f);
             }
+            //rs.close();
             return pairs;
         }
         return null;
@@ -47,6 +48,7 @@ public class Cpu_Data {
                 f = Integer.valueOf(v);
                 if(f<=0) f = 1;
             }
+           // rs.close();
             return f;
         }
         return 1;

@@ -20,34 +20,27 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
-public class ControllerVistaPrincipal implements Initializable, ControlledScreen {
+public class Controller implements Initializable {
     @FXML   BorderPane mainPane;
    //chart
     @FXML   LineChart<String,Number> cpu_chart;
     //Table View
     @FXML   TableView<TableSpace> tableSpaceTableView;
 
-    ScreensController myController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*ORCConnection connection = ORCConnection.Instance();
-        connection.initializeConnection("SYSTEM", "sysdba", "a1b2c3d4c5", "localhost", "orcl", 1521, false);
-        */
+        ORCConnection connection = ORCConnection.Instance();
+        connection.initializeConnection("SYSTEM", "sysdba", "root", "192.168.1.111", "XE", 1521, false);
         cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
         cpu_chart.getYAxis().setAutoRanging(false);
 
         //TableView TableSpace
-        //tableSpaceTableView.getColumns().get(0);
+        tableSpaceTableView.getColumns().get(0);
 
     }
     @FXML void stupid(){
         for( XYChart.Data<String, Number> i:cpu_chart.getData().get(0).getData()) System.out.print(", "+i.getXValue()+":"+i.getYValue());
         System.out.println();
-    }
-
-    @Override
-    public void setScreenParent(ScreensController screenPage) {
-        myController = screenPage;
     }
 }
