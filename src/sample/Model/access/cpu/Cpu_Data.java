@@ -25,6 +25,7 @@ public class Cpu_Data {
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
             ResultSet rs = ORCConnection.Instance().executeQuery("SELECT VALUE, END_TIME FROM V$SYSMETRIC WHERE METRIC_ID = 2057");
             while (rs.next()) {
+                if(j>=c) break;
                 BigDecimal bd = rs.getBigDecimal("VALUE");
                 f = bd.floatValue();
                 d = new Date(System.currentTimeMillis());
