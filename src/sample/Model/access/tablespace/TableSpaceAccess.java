@@ -25,6 +25,9 @@ public class TableSpaceAccess {
     }
 
     static {
+
+    }
+    public static void initializate(){
         tableSpaces = FXCollections.observableList(retrieveTableSpaces());
     }
     public static List<TableSpace> retrieveTableSpaces(){

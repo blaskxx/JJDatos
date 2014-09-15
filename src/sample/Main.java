@@ -14,13 +14,13 @@ public class Main extends Application {
     public static String screen1File = "../View/Login.fxml";
     public static String screen2ID = "screen2";
     public static String screen2File = "../View/VistaPrincipal.fxml";
-
+    public static ScreensController mainContainer;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        ScreensController mainContainer = new ScreensController();
+        mainContainer = new ScreensController();
         mainContainer.loadScreen(Main.screen1ID, Main.screen1File);
-        mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
+        //mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
 
         mainContainer.setScreen(Main.screen1ID);
 

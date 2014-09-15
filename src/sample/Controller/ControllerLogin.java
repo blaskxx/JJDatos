@@ -103,10 +103,16 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         if(!user.getText().isEmpty()&&!password.getText().isEmpty()&&!url.getText().isEmpty()&&!port.getText().isEmpty()
                 &&!serviceName.getText().isEmpty()){
             ORCConnection connection = ORCConnection.Instance();
-            connection.initializeConnection(user.getText(), comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), false);
+            boolean isS = false;
+            if(comboBox.getSelectionModel().getSelectedIndex() >= 0) isS = true;
+            if(connection.initializeConnection(user.getText(), comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS)) {
+               Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
+               return true;
+            }
+            else return false;
             /*cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
             cpu_chart.getYAxis().setAutoRanging(false);*/
-            return true;
+
         }
         return false;
     }
