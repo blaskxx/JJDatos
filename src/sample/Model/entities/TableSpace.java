@@ -1,22 +1,20 @@
 package sample.Model.entities;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * Created by Casa on 14/09/2014.
  */
 public class TableSpace {
-    StringProperty name;
-    StringProperty file;
-    BooleanProperty autoIncrement;
-    FloatProperty size;
-    FloatProperty maxSize;
-    FloatProperty used;
-    FloatProperty free;
-    FloatProperty Increase;
-    FloatProperty pctFree;
+    StringProperty name = new SimpleStringProperty();
+    StringProperty file = new SimpleStringProperty();
+    BooleanProperty autoIncrement = new SimpleBooleanProperty();
+    FloatProperty size = new SimpleFloatProperty();
+    FloatProperty maxSize = new SimpleFloatProperty();
+    FloatProperty used = new SimpleFloatProperty();
+    FloatProperty free= new SimpleFloatProperty();
+    FloatProperty Increase =new SimpleFloatProperty();
+    FloatProperty pctFree=new SimpleFloatProperty();
 
     public TableSpace(String name, String file, Boolean autoIncrement, Float size, Float maxSize, Float used,
                       Float free, Float increase, Float pctFree) {
