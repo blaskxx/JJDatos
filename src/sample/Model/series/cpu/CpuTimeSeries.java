@@ -76,10 +76,6 @@ public class CpuTimeSeries {
         }
     }
 
-    public void s(){
-
-    }
-
     public ObservableList<XYChart.Series<String,Number>> getCpu_use() {
         return d;
     }
@@ -105,5 +101,8 @@ public class CpuTimeSeries {
                 e.printStackTrace();
             }
         }
+    }
+    public void stopThread(){
+      executor.shutdown();
     }
 }
