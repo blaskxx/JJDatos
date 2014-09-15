@@ -2,20 +2,13 @@ package sample.Model.series.cpu;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.Timeline;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.util.Pair;
 import sample.Model.access.cpu.Cpu_Data;
-
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,19 +19,12 @@ import java.util.concurrent.Executors;
 public class CpuTimeSeries {
     static int MAX = 0;
     static int cpu_count = 1;
-    //private final   XYChart.Series<String,Number> cpu_use           = new XYChart.Series<String,Number>();
-    //private         XYChart.Series<String,Number> series[];
     private final   ObservableList<XYChart.Series<String,Number>> d = FXCollections.observableArrayList(new ArrayList<XYChart.Series<String, Number>>());
     private static  CpuTimeSeries instance;
-
-    //private ConcurrentLinkedQueue< XYChart.Data<String, Number> > dataQ = new ConcurrentLinkedQueue< XYChart.Data<String, Number> >();
     private ConcurrentLinkedQueue< XYChart.Data<String, Number> > dataQArr[];
-
 
     private ExecutorService executor;
     private AddToQueue addToQueue;
-    private Timeline timeline2;
-    private NumberAxis xAxis;
 
     public static CpuTimeSeries getInstance() {
         if(instance == null) instance = new CpuTimeSeries();

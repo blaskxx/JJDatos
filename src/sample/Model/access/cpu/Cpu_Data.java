@@ -27,6 +27,7 @@ public class Cpu_Data {
                 f = bd.floatValue();
                 d = new Date(System.currentTimeMillis());
                 pairs[j++] =  new Pair<>(sdf.format(d),f);
+                System.out.print(true);
             }
             return pairs;
         }
