@@ -119,6 +119,12 @@ public class ControllerLogin implements Initializable, ControlledScreen {
             ORCConnection connection = ORCConnection.Instance();
             boolean isS = false;
             if(comboBox.getSelectionModel().getSelectedIndex() >= 0) isS = true;
+            if(user.getText().toLowerCase().equals("system")) isS = true;
+            if(isS == false) {
+                Dialogs.create().message("Se Necesita Conectarse Como SYSDBA").owner(myController).masthead("Error En Los Privilegios").showError();
+                return false;
+            }
+            if(user.getText().toLowerCase().equals("system")) isS = false;
             try {
                 connection.initializeConnection(user.getText(), comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
                 if(connection.isInitialized()){

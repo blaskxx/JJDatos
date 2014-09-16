@@ -40,7 +40,7 @@ public class TableAccess {
             }
             return tables;
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
             return null;
         }
     }
