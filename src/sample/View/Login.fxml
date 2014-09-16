@@ -66,8 +66,6 @@
                 </Label>
                 <TextField fx:id="user" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                 <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                <Button mnemonicParsing="false" onAction="#goToPrincipal" prefHeight="25.0" prefWidth="149.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
-                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="--Select--" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
                 <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Port" GridPane.rowIndex="3">
                     <font>
                         <Font name="Arial" size="22.0" />
@@ -83,8 +81,8 @@
                         <Font size="55.0" />
                     </font>
                 </Label>
-                <TextField fx:id="url" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                 <TextField fx:id="port" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <TextField fx:id="url" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                 <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Privilege as" GridPane.rowIndex="6">
                     <font>
                         <Font size="22.0" />
@@ -96,6 +94,8 @@
                     </font>
                 </Label>
                 <TextField fx:id="serviceName" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="--Select--" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                <Button mnemonicParsing="false" onAction="#goToPrincipal" prefHeight="25.0" prefWidth="149.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
             <ProgressIndicator fx:id="PGI_loading" prefHeight="107.0" prefWidth="105.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <ImageView fitHeight="95.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                <image>
