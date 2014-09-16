@@ -86,9 +86,9 @@ public class CpuTimeSeries {
         @Override
         public void run() {
             try {
+            Pair<String, Float> psf[];
+            psf = Cpu_Data.lastUpdate();
             for(int i = 0; i< cpu_count; i++){
-                Pair<String, Float> psf[];
-                    psf = Cpu_Data.lastUpdate();
                     if (psf != null) {
                         if(i>=psf.length) break;
                         dataQArr[i].add(new XYChart.Data<String, Number>(psf[i].getKey(), psf[i].getValue()));
@@ -96,10 +96,11 @@ public class CpuTimeSeries {
                 }
                 Thread.sleep(1000);
                 executor.execute(this);
-            }catch (SQLException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            }
+            catch (SQLException e) {}
+            catch (InterruptedException e) {}
+            catch (NullPointerException ne){
+                executor.execute(this);
             }
         }
     }

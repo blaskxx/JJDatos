@@ -11,7 +11,12 @@ public class Main extends Application {
     public static String screen1File = "../View/Login.fxml";
     public static String screen2ID = "screen2";
     public static String screen2File = "../View/VistaPrincipal.fxml";
+    public static String pieChart = "piechart";
+    public static String pieChartFile =  "../View/TPieGraph.fxml";
+
     public static ScreensController mainContainer;
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -23,7 +28,7 @@ public class Main extends Application {
 
         //Group root = new Group(mainContainer);
         //root.getChildren().addAll(mainContainer);
-        Scene scene = new Scene(mainContainer);
+        Scene scene = new Scene(mainContainer,400,400);
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(900);
         primaryStage.setMinHeight(450);

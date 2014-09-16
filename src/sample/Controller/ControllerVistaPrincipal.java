@@ -2,7 +2,9 @@ package sample.Controller;
 //connection.initializeConnection("Johan", "sysdba", "root", "192.168.1.111", "XE", 1521, true);
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
@@ -10,10 +12,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.Model.access.tablespace.TableSpaceAccess;
 import sample.Model.entities.TableSpace;
 import sample.Model.series.cpu.CpuTimeSeries;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,6 +65,18 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
 
         tableSpaceTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+        tableSpaceTableView.setOnMouseClicked(e-> {
+                if (e.getClickCount()>1) {
+                    TableSpace tbs = tableSpaceTableView.getSelectionModel().getSelectedItem();
+                    if(tbs!=null){
+                        TPieController.tbs = tbs;
+                            myController.loadScreen(Main.pieChart,Main.pieChartFile);
+                            myController.setScreen(Main.pieChart);
+                    }
+                }
+            });
+
+
         TableSpaceAccess.initializate();
         tableSpaceTableView.setItems(TableSpaceAccess.getTableSpaces());
         cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
@@ -76,6 +92,8 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
         Stage stage = (Stage) myController.getScene().getWindow();
+        stage.setWidth(1000);
+        stage.setHeight(600);
         stage.setOnCloseRequest(e->frameClose());
     }
     @FXML void frameClose(){
