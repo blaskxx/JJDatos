@@ -27,7 +27,7 @@ public class TableSpaceAccess {
     static {
         try {
             connection = ORCConnection.Instance().getOrcConnection();
-            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.file_name \"File name\",df.AUTOEXTENSIBLE \"Auto\", df.MAXBYTES \"MAX\", df.INCREMENT_BY \"grow\",df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\"from (select tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
+            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.file_name \"File name\",df.AUTOEXTENSIBLE \"Auto\", df.MAXBYTES \"MAX\", (df.INCREMENT_BY * 8192)/(1024*1024) \"grow\",df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\"from (select tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
             pps = connection.prepareStatement(sql);
         } catch (SQLException e) {
             e.printStackTrace();
