@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.TPieController">
+   <children>
+      <SplitPane dividerPositions="0.1708542713567839, 0.8291457286432161" layoutX="-33.0" layoutY="-64.0" orientation="VERTICAL" prefHeight="481.0" prefWidth="641.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane>
+               <children>
+                  <Label fx:id="lblTitle" alignment="CENTER" layoutX="297.0" layoutY="35.0" prefHeight="87.0" prefWidth="687.0" text="TABLESPACE" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="41.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="59.0" prefWidth="598.0">
+               <children>
+                  <PieChart fx:id="piechart" layoutX="49.0" layoutY="-72.0" prefHeight="328.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="51.0" prefWidth="687.0">
+               <children>
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleReturn" prefHeight="25.0" prefWidth="112.0" text="Return" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
