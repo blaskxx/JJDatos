@@ -30,6 +30,7 @@
                         <TableView fx:id="tableSpaceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
                           <columns>
                               <TableColumn fx:id="TBC_name" editable="false" prefWidth="75.0" text="Nombre" />
+                              <TableColumn fx:id="TBC_Size" prefWidth="75.0" text="Tamaño" />
                               <TableColumn fx:id="TBC_used" prefWidth="75.0" text="Usado(MB)" />
                               <TableColumn fx:id="TBC_free" prefWidth="75.0" text="Libre(MB)" />
                               <TableColumn fx:id="TBC_file" prefWidth="75.0" text="Archivo" />

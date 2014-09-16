@@ -7,9 +7,7 @@ import sample.Model.entities.TableSpace;
 import sample.cr.una.pesistence.access.ORCConnection;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +21,17 @@ public class TableSpaceAccess {
     public static ObservableList<TableSpace> getTableSpaces() {
         return tableSpaces;
     }
+    private static Connection connection;
+    private static PreparedStatement pps;
 
     static {
-
+        try {
+            connection = ORCConnection.Instance().getOrcConnection();
+            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.file_name \"File name\",df.AUTOEXTENSIBLE \"Auto\", df.MAXBYTES \"MAX\", df.INCREMENT_BY \"grow\",df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\"from (select tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
+            pps = connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public static void initializate(){
         tableSpaces = FXCollections.observableList(retrieveTableSpaces());
@@ -34,8 +40,8 @@ public class TableSpaceAccess {
         List<TableSpace> tableSpaces = new ArrayList<>();
         try{
         if(ORCConnection.Instance().isInitialized()) {
-            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.file_name \"File name\",df.AUTOEXTENSIBLE \"Auto\", df.MAXBYTES \"MAX\", df.INCREMENT_BY \"grow\",df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\"from (select tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
-            ResultSet rs = ORCConnection.Instance().executeQuery(sql);
+
+            ResultSet rs =pps.executeQuery();
             while (rs.next()) {
                 String name = rs.getString(1);
                 float used = rs.getBigDecimal(2).floatValue();

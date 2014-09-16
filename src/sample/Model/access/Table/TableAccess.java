@@ -5,6 +5,8 @@ import sample.Model.entities.Table;
 import sample.Model.entities.TableSpace;
 import sample.cr.una.pesistence.access.ORCConnection;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,16 +23,26 @@ public class TableAccess {
         if(instance==null) instance=new TableAccess();
         return instance;
     }
+    Connection connection = null;
+    PreparedStatement pps = null;
     protected TableAccess(){
-
+        try {
+            connection = ORCConnection.Instance().getOrcConnection();
+            String sql = "select dbs.segment_name,dbs.bytes/1024/1024 MB, allt.TBS from dba_segments dbs,(SELECT TABLE_NAME \"TN\",TABLESPACE_NAME \"TBS\" FROM ALL_TABLES) allt where segment_type='TABLE' and segment_name=allt.TN AND allt.TBS=?";
+            pps=connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public List<Table> retrieveForTableSpace(String TBS_name){
-        ORCConnection connection = ORCConnection.Instance();
+
         List<Table> tables = new ArrayList<>();
-        if(!connection.isInitialized()) return tables;
-        try{
-            String sql = "select dbs.segment_name,dbs.bytes/1024/1024 MB, allt.TBS from dba_segments dbs,(SELECT TABLE_NAME \"TN\",TABLESPACE_NAME \"TBS\" FROM ALL_TABLES) allt where segment_type='TABLE' and segment_name=allt.TN AND allt.TBS='"+TBS_name+"'";
-            ResultSet rs = connection.executeQuery(sql);
+        try {
+
+            if(!ORCConnection.Instance().isInitialized()) return tables;
+
+            pps.setString(1,TBS_name);
+            ResultSet rs = pps.executeQuery();
             while (rs.next()){
                 String tableName = rs.getString(1);
                 float size = rs.getBigDecimal(2).floatValue();
@@ -40,9 +52,9 @@ public class TableAccess {
             }
             return tables;
         } catch (SQLException e) {
-           // e.printStackTrace();
-            return null;
+            e.printStackTrace();
         }
+        return tables;
     }
     public List<Table> retrieveForTableSpace(TableSpace TBS_name){
         return retrieveForTableSpace(TBS_name.getName());

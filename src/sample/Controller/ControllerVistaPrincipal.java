@@ -16,6 +16,7 @@ import sample.Main;
 import sample.Model.access.tablespace.TableSpaceAccess;
 import sample.Model.entities.TableSpace;
 import sample.Model.series.cpu.CpuTimeSeries;
+import sample.cr.una.pesistence.access.ORCConnection;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +41,7 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
     @FXML   TableColumn<TableSpace,String> TBC_max;
     @FXML   TableColumn<TableSpace,String> TBC_grow;
     @FXML   TableColumn<TableSpace,String> TBC_pfree;
+    @FXML   TableColumn<TableSpace,String> TBC_Size;
 
 
     @Override
@@ -53,6 +55,7 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
         TBC_max.setCellValueFactory(new PropertyValueFactory("maxSize"));
         TBC_grow.setCellValueFactory(new PropertyValueFactory("Increase"));
         TBC_pfree.setCellValueFactory(new PropertyValueFactory("pctFree"));
+        TBC_Size.setCellValueFactory(new PropertyValueFactory("size"));
 
         TBC_name.prefWidthProperty().bind(tableSpaceTableView.prefWidthProperty().multiply(0.5));
         TBC_used.prefWidthProperty().bind(tableSpaceTableView.prefWidthProperty().multiply(0.3));
@@ -95,6 +98,7 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
         stage.setWidth(1000);
         stage.setHeight(600);
         stage.setOnCloseRequest(e->frameClose());
+        //ORCConnection.Instance().close();
     }
     @FXML void frameClose(){
         CpuTimeSeries.getInstance().stopThread();

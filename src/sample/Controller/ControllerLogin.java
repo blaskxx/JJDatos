@@ -12,6 +12,7 @@ import sample.Main;
 import sample.cr.una.pesistence.access.ORCConnection;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -59,6 +60,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
             Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
             if (!myController.setScreen(Main.screen2ID)) {
                 System.out.println("imposible Cargar La Pantalla 2");
+                PGI_loading.setVisible(false);
             }
         };
         if (checkInitiation()) new Thread(r).start();
@@ -125,10 +127,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                 return false;
             }
             if(user.getText().toLowerCase().equals("system")) isS = false;
+            String usertxt = user.getText();
+            if(isS) usertxt+=" as sysdba";
             try {
-                connection.initializeConnection(user.getText(), comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
+                connection.initializeConnection(usertxt, comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
                 if(connection.isInitialized()){
-                   //Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
                    return true;
                 }
                 else {
@@ -137,7 +140,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                 }
             } catch (ClassNotFoundException e) {
                 Dialogs.create().showException(e);
+               // connection.close();
                 return false;
+            } catch (SQLException e) {
+                Dialogs.create().showException(e);
+               // connection.close();
             }
         }
         return false;

@@ -27,6 +27,7 @@ public class CpuTimeSeries {
     private ExecutorService executor;
     private AddToQueue addToQueue;
 
+    private boolean stop;
 
     public static CpuTimeSeries getInstance() {
         if(instance == null) instance = new CpuTimeSeries();
@@ -86,6 +87,7 @@ public class CpuTimeSeries {
         @Override
         public void run() {
             try {
+            if(stop) return;
             Pair<String, Float> psf[];
             psf = Cpu_Data.lastUpdate();
             for(int i = 0; i< cpu_count; i++){
@@ -106,7 +108,9 @@ public class CpuTimeSeries {
     }
     public void stopThread(){
         try {
-            executor.awaitTermination(1, TimeUnit.SECONDS);
+            stop = true;
+            executor.awaitTermination(2, TimeUnit.SECONDS);
+            executor.shutdown();
         } catch (InterruptedException e) {
             executor.shutdown();
             e.printStackTrace();
