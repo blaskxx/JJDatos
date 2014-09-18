@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
+<BorderPane fx:id="bordePaneLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerLogin">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -33,7 +33,7 @@
         </MenuBar>
     </top>
     <center>
-        <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
+        <GridPane fx:id="gridPane" hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="141.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="78.0" />
@@ -81,7 +81,7 @@
                         <Font size="55.0" />
                     </font>
                 </Label>
-                <TextField fx:id="port" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <TextField fx:id="port" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField fx:id="url" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                 <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Privilege as" GridPane.rowIndex="6">
                     <font>
@@ -95,13 +95,14 @@
                 </Label>
                 <TextField fx:id="serviceName" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                 <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="--Select--" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-                <Button mnemonicParsing="false" onAction="#goToPrincipal" prefHeight="25.0" prefWidth="149.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+                <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#goToPrincipal" prefHeight="25.0" prefWidth="149.0" text="Login" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
             <ProgressIndicator fx:id="PGI_loading" prefHeight="107.0" prefWidth="105.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <ImageView fitHeight="95.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                <image>
                   <Image url="@../../lock.png" />
                </image>
             </ImageView>
+            <CheckBox mnemonicParsing="false" text="Remember me" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             </children>
         </GridPane>
     </center>

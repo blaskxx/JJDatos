@@ -4,9 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Reflection;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import org.controlsfx.dialog.Dialogs;
 import sample.Main;
 import sample.cr.una.pesistence.access.ORCConnection;
@@ -25,6 +30,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                              "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b";
 
    ScreensController myController;
+    @FXML
+    BorderPane bordePaneLogin;
+    @FXML
+    GridPane gridPane;
+
    @FXML
     ProgressIndicator PGI_loading;
    @FXML
@@ -50,6 +60,14 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Reflection r = new Reflection();
+        r.setFraction(0.7f);
+        gridPane.setEffect(r);
+
+        //DropShadow effect
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetX(5);
+        dropShadow.setOffsetY(5);
         comboBox.setItems(list);
     }
 
