@@ -18,10 +18,6 @@ import javafx.util.Duration;
 
 import java.util.HashMap;
 
-/**
- *
- * @author Angie
- */
 public class ScreensController  extends AnchorPane {
     //Holds the screens to be displayed
 

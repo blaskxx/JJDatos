@@ -13,6 +13,8 @@ public class Main extends Application {
     public static String screen2File = "../View/VistaPrincipal.fxml";
     public static String pieChart = "piechart";
     public static String pieChartFile =  "../View/TPieGraph.fxml";
+    public static String barChart="barChart";
+    public static String barChartFile="../View/TBarGraph.fxml";
 
     public static ScreensController mainContainer;
 

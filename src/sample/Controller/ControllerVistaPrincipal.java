@@ -1,12 +1,11 @@
 package sample.Controller;
 //connection.initializeConnection("Johan", "sysdba", "root", "192.168.1.111", "XE", 1521, true);
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,9 +15,6 @@ import sample.Main;
 import sample.Model.access.tablespace.TableSpaceAccess;
 import sample.Model.entities.TableSpace;
 import sample.Model.series.cpu.CpuTimeSeries;
-import sample.cr.una.pesistence.access.ORCConnection;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,6 +22,7 @@ import java.util.ResourceBundle;
 public class ControllerVistaPrincipal implements Initializable, ControlledScreen {
 
     ScreensController myController;
+
 
     @FXML   BorderPane mainPane;
    //chart
@@ -42,7 +39,7 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
     @FXML   TableColumn<TableSpace,String> TBC_grow;
     @FXML   TableColumn<TableSpace,String> TBC_pfree;
     @FXML   TableColumn<TableSpace,String> TBC_Size;
-
+    @FXML   BarChart<String,Number> tableSpaceUseChart;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,14 +76,24 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
                 }
             });
 
-
+        //diagram 1
         TableSpaceAccess.initializate();
         tableSpaceTableView.setItems(TableSpaceAccess.getTableSpaces());
         cpu_chart.setData(CpuTimeSeries.getInstance().getCpu_use());
 
         cpu_chart.getYAxis().setAutoRanging(false);
 
+        //Diagram 2
+
+        ObservableList<TableSpace> aux=tableSpaceTableView.getItems();
+        aux.forEach(e-> tableSpaceUseChart.getData().addAll( new BarChart.Series(
+                e.getName(),FXCollections.observableArrayList(
+                new BarChart.Data("Free",e.getFree()),
+                new BarChart.Data("Used",e.getUsed())
+        ))));
+
     }
+
     @FXML void stupid(){
         for( XYChart.Data<String, Number> i:cpu_chart.getData().get(0).getData()) System.out.print(", "+i.getXValue()+":"+i.getYValue());
         System.out.println();

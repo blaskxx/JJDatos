@@ -39,7 +39,6 @@ public class TPieController implements Initializable,ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.print(tbs.getName());
         List<Table> tables ;
         while((tables = TableAccess.Instance().retrieveForTableSpace(tbs))== null);
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList(new ArrayList<PieChart.Data>());
