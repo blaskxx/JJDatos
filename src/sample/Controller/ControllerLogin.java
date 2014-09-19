@@ -4,18 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Reflection;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import org.controlsfx.dialog.Dialogs;
 import sample.Main;
+import sample.Model.FileManagement.LoginFile;
 import sample.cr.una.pesistence.access.ORCConnection;
 
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -28,7 +27,10 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                              "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\."+
                              "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\."+
                              "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b";
-
+    //Login things
+    private final String pathArchiveLogin="src\\FileMonitor\\login.ser";
+    private LoginFile dataLogin;
+    //------
    ScreensController myController;
     @FXML
     BorderPane bordePaneLogin;
@@ -47,11 +49,63 @@ public class ControllerLogin implements Initializable, ControlledScreen {
     private TextField url;
     @FXML
     private TextField serviceName;
-
     @FXML
     private ComboBox<String> comboBox;
+    @FXML
+    private CheckBox chkRememberMe;
 
     ObservableList<String> list= FXCollections.observableArrayList("sysdba","sysoper");
+
+    private boolean readLoginFile(){
+        LoginFile lf=null;
+        try
+        {
+            FileInputStream fileIn = new FileInputStream(pathArchiveLogin);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            lf = (LoginFile) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println(lf.toString());//BORRAR
+            dataLogin=lf;
+            return true;
+        }catch(IOException i)
+        {
+            i.printStackTrace();
+            return false;
+        }catch(ClassNotFoundException c)
+        {
+            System.out.println("Employee class not found");
+            c.printStackTrace();
+            return false;
+        }
+    }
+    private void writeLoginFile(){
+
+        dataLogin=new LoginFile();
+        dataLogin.setAutoLogin(true);
+        dataLogin.setNameService("orcl");
+        dataLogin.setPassword("a1b2c3d4c5");
+        dataLogin.setPort(1521);
+        dataLogin.setPrivilege("sysdba");
+        dataLogin.setUrl("localhost");
+        dataLogin.setUser("system");
+        dataLogin.setRememberMe(true);
+        try
+        {
+            FileOutputStream fileOut =
+                    new FileOutputStream(pathArchiveLogin);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(dataLogin);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in"+pathArchiveLogin);
+        }catch(IOException i)
+        {
+            i.printStackTrace();
+        }
+
+
+    }
 
     @Override
     public void setScreenParent(ScreensController screenPage) {
@@ -60,15 +114,22 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Reflection r = new Reflection();
-        r.setFraction(0.7f);
-        gridPane.setEffect(r);
 
-        //DropShadow effect
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setOffsetX(5);
-        dropShadow.setOffsetY(5);
         comboBox.setItems(list);
+
+        if(readLoginFile()){
+            this.user.setText(dataLogin.getUser());
+            this.url.setText(dataLogin.getUrl());
+            this.serviceName.setText(dataLogin.getNameService());
+            this.password.setText(dataLogin.getPassword());
+            this.comboBox.setValue(dataLogin.getPrivilege());
+            this.chkRememberMe.setSelected(dataLogin.isRememberMe());
+            this.port.setText(String.valueOf(dataLogin.getPort()));
+            if(dataLogin.isAutoLogin()) {
+                goToPrincipal();
+            }
+        }
+
     }
 
     @FXML
@@ -127,44 +188,48 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         this.user = user;
     }
 
+
    private boolean checkInitiation(){
-       String errors = "";
-        if(!user.getText().isEmpty()&&!password.getText().isEmpty()&&!url.getText().isEmpty()&&!port.getText().isEmpty()
-                &&!serviceName.getText().isEmpty()){
-            if(!url.getText().toLowerCase().matches("(localhost)|"+ipRegex)) errors += "URL miss-matches Format"+System.lineSeparator();
-            if(!port.getText().matches("[0-9]+")) errors += "Port Is A Number";
-            if(errors != ""){
-                Dialogs.create().message(errors).owner(myController).masthead("Error En Los Datos Ingresados").showError();
-                return false;            }
-            ORCConnection connection = ORCConnection.Instance();
-            boolean isS = false;
-            if(comboBox.getSelectionModel().getSelectedIndex() >= 0) isS = true;
-            if(user.getText().toLowerCase().equals("system")) isS = true;
-            if(isS == false) {
-                Dialogs.create().message("Se Necesita Conectarse Como SYSDBA").owner(myController).masthead("Error En Los Privilegios").showError();
-                return false;
-            }
-            if(user.getText().toLowerCase().equals("system")) isS = false;
-            String usertxt = user.getText();
-            if(isS) usertxt+=" as sysdba";
-            try {
-                connection.initializeConnection(usertxt, comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
-                if(connection.isInitialized()){
-                   return true;
-                }
-                else {
-                    Dialogs.create().masthead("Error En log In").owner(this.myController).message("No se pudo Conectar Con el Servidor").showError();
+       //lea de archivo
+
+           String errors = "";
+            if(!user.getText().isEmpty()&&!password.getText().isEmpty()&&!url.getText().isEmpty()&&!port.getText().isEmpty()
+                    &&!serviceName.getText().isEmpty()){
+                if(!url.getText().toLowerCase().matches("(localhost)|"+ipRegex)) errors += "URL miss-matches Format"+System.lineSeparator();
+                if(!port.getText().matches("[0-9]+")) errors += "Port Is A Number";
+                if(errors != ""){
+                    Dialogs.create().message(errors).owner(myController).masthead("Error En Los Datos Ingresados").showError();
+                    return false;            }
+                ORCConnection connection = ORCConnection.Instance();
+                boolean isS = false;
+                if(comboBox.getSelectionModel().getSelectedIndex() >= 0) isS = true;
+                if(user.getText().toLowerCase().equals("system")) isS = true;
+                if(isS == false) {
+                    Dialogs.create().message("Se Necesita Conectarse Como SYSDBA").owner(myController).masthead("Error En Los Privilegios").showError();
                     return false;
                 }
-            } catch (ClassNotFoundException e) {
-                Dialogs.create().showException(e);
-               // connection.close();
-                return false;
-            } catch (SQLException e) {
-                Dialogs.create().showException(e);
-               // connection.close();
+                if(user.getText().toLowerCase().equals("system")) isS = false;
+                String usertxt = user.getText();
+                if(isS) usertxt+=" as sysdba";
+                try {
+
+                    connection.initializeConnection(usertxt, comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
+                    if(connection.isInitialized()){
+                       return true;
+                    }
+                    else {
+                        Dialogs.create().masthead("Error En log In").owner(this.myController).message("No se pudo Conectar Con el Servidor").showError();
+                        return false;
+                    }
+                } catch (ClassNotFoundException e) {
+                    Dialogs.create().showException(e);
+                   // connection.close();
+                    return false;
+                } catch (SQLException e) {
+                    Dialogs.create().showException(e);
+                   // connection.close();
+                }
             }
+            return false;
         }
-        return false;
-    }
 }

@@ -102,7 +102,7 @@
                   <Image url="@../../lock.png" />
                </image>
             </ImageView>
-            <CheckBox mnemonicParsing="false" text="Remember me" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <CheckBox fx:id="chkRememberMe" mnemonicParsing="false" text="Remember me" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             </children>
         </GridPane>
     </center>
