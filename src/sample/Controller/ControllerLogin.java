@@ -61,13 +61,18 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         try
         {
             FileInputStream fileIn = new FileInputStream(pathArchiveLogin);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            lf = (LoginFile) in.readObject();
-            in.close();
-            fileIn.close();
-            System.out.println(lf.toString());//BORRAR
-            dataLogin=lf;
-            return true;
+            if(fileIn.available()>0){
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                lf = (LoginFile) in.readObject();
+                in.close();
+                fileIn.close();
+                dataLogin=lf;
+                return true;
+            }else{
+                return false;
+            }
+
+
         }catch(IOException i)
         {
             i.printStackTrace();
@@ -82,14 +87,14 @@ public class ControllerLogin implements Initializable, ControlledScreen {
     private void writeLoginFile(){
 
         dataLogin=new LoginFile();
-        dataLogin.setAutoLogin(true);
-        dataLogin.setNameService("orcl");
-        dataLogin.setPassword("a1b2c3d4c5");
-        dataLogin.setPort(1521);
-        dataLogin.setPrivilege("sysdba");
-        dataLogin.setUrl("localhost");
-        dataLogin.setUser("system");
-        dataLogin.setRememberMe(true);
+        dataLogin.setAutoLogin(false);
+        dataLogin.setNameService(this.serviceName.getText());
+        dataLogin.setPassword(this.password.getText());
+        dataLogin.setPort(Integer.parseInt(this.getPort().getText()));
+        dataLogin.setPrivilege(this.comboBox.getValue());
+        dataLogin.setUrl(this.url.getText());
+        dataLogin.setUser(this.user.getText());
+        dataLogin.setRememberMe(this.chkRememberMe.isSelected());
         try
         {
             FileOutputStream fileOut =
@@ -131,7 +136,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         }
 
     }
-
+//todo en el goto validar rememberme
     @FXML
     private void goToPrincipal(){
         PGI_loading.setVisible(true);
@@ -214,7 +219,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                 try {
 
                     connection.initializeConnection(usertxt, comboBox.getValue(), password.getText(), url.getText(), serviceName.getText(), Integer.parseInt(port.getText()), isS);
+
                     if(connection.isInitialized()){
+                        if(chkRememberMe.isSelected()){
+                            writeLoginFile();
+                        }
                        return true;
                     }
                     else {
