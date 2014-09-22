@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerSmptServer">
+   <children>
+      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="418.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="19.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="117.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Corporate email" GridPane.rowIndex="1" />
+            <Label text="Password" GridPane.rowIndex="2" />
+            <TextField fx:id="headerEmail" promptText="this_is" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="SMPT Google Server Email" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\@" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <Label text="gmail.com" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <HBox layoutX="199.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

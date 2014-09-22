@@ -13,9 +13,12 @@ public class Main extends Application {
     public static String screen2File = "../View/VistaPrincipal.fxml";
     public static String pieChart = "piechart";
     public static String pieChartFile =  "../View/TPieGraph.fxml";
-    public static String barChart="barChart";
-    public static String barChartFile="../View/TBarGraph.fxml";
-
+    public static String emailConfig="configurationDBAEmail";
+    public static String emailConfigFile="../View/EmailConfiguration.fxml";
+    public static String spmtServer="configurationSMPTServer";
+    public static String spmtServerFile="../View/EmailServerConfiguration.fxml";
+    public static String autoLogin="autoLogin";
+    public static String autoLoginFile="../View/AutoLogin.fxml";
     public static ScreensController mainContainer;
 
 

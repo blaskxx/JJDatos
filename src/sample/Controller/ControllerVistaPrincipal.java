@@ -4,19 +4,27 @@ package sample.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import sample.Main;
 import sample.Model.access.tablespace.TableSpaceAccess;
 import sample.Model.entities.TableSpace;
 import sample.Model.series.cpu.CpuTimeSeries;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static java.lang.System.exit;
 
 
 public class ControllerVistaPrincipal implements Initializable, ControlledScreen {
@@ -40,6 +48,33 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
     @FXML   TableColumn<TableSpace,String> TBC_pfree;
     @FXML   TableColumn<TableSpace,String> TBC_Size;
     @FXML   BarChart<String,Number> tableSpaceUseChart;
+
+     @FXML
+     public void handleExit(){
+         frameClose();
+         exit(0);
+     }
+
+    @FXML
+    public void handleConfigurationEmailDBA(){
+        Runnable r = ()-> {
+            Main.mainContainer.loadScreen(Main.emailConfig, Main.emailConfigFile);
+            if (!myController.setScreen(Main.emailConfig)) {
+                System.out.println("Imposible to charge the screen");
+            }
+        };
+         new Thread(r).start();
+    }
+
+    @FXML void handleConfigurationServerSMPT(){
+        Runnable r = ()-> {
+            Main.mainContainer.loadScreen(Main.spmtServer, Main.spmtServerFile);
+            if (!myController.setScreen(Main.spmtServer)) {
+                System.out.println("Imposible to charge the screen");
+            }
+        };
+        new Thread(r).start();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,10 +129,6 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
 
     }
 
-    @FXML void stupid(){
-        for( XYChart.Data<String, Number> i:cpu_chart.getData().get(0).getData()) System.out.print(", "+i.getXValue()+":"+i.getYValue());
-        System.out.println();
-    }
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
@@ -111,4 +142,13 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
         CpuTimeSeries.getInstance().stopThread();
     }
 
+    @FXML void handleAutoLogin(){
+        Runnable r = ()-> {
+            Main.mainContainer.loadScreen(Main.autoLogin, Main.autoLoginFile);
+            if (!myController.setScreen(Main.autoLogin)) {
+                System.out.println("Imposible to charge the screen");
+            }
+        };
+        new Thread(r).start();
+    }
 }

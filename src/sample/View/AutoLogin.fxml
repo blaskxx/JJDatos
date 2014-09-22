@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="bordePaneLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerAutoLogin">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <GridPane fx:id="gridPane" hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="141.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="78.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="81.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.0" minWidth="10.0" prefWidth="113.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="76.0" minHeight="49.0" prefHeight="49.0" />
+                <RowConstraints maxHeight="63.0" minHeight="3.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+            </padding>
+            <children>
+                <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="User" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="Arial" size="22.0" />
+                    </font>
+                </Label>
+                <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Password" GridPane.rowIndex="2">
+                    <font>
+                        <Font name="Arial" size="22.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="user" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Port" GridPane.rowIndex="3">
+                    <font>
+                        <Font name="Arial" size="22.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="LoginFont" stylesheets="@../../Fonts.css" text="URL" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label prefHeight="81.0" prefWidth="260.0" text="AutoLogin" GridPane.columnSpan="4">
+                    <font>
+                        <Font size="55.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="port" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="url" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Privilege as" GridPane.rowIndex="6">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label styleClass="LoginFont" stylesheets="@../../Fonts.css" text="Name Service" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="serviceName" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="--Select--" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                <Button mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="149.0" text="OK" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+            <ProgressIndicator fx:id="PGI_loading" prefHeight="107.0" prefWidth="105.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="149.0" text="Cancel" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+            <CheckBox fx:id="chkAutoLogin" mnemonicParsing="false" text="AutoLogin" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>

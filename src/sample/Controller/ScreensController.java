@@ -41,6 +41,7 @@ public class ScreensController  extends AnchorPane {
     //finally injects the screenPane to the controller.
     public boolean loadScreen(String name, String resource) {
         try {
+
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = (Parent) myLoader.load();
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
