@@ -88,8 +88,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
     private void writeLoginFile(){
 
-        dataLogin=new LoginFile();
-        dataLogin.setAutoLogin(false);
+        if(dataLogin==null){
+            dataLogin=new LoginFile();
+            dataLogin.setAutoLogin(false);
+        }
+
         dataLogin.setNameService(this.serviceName.getText());
         dataLogin.setPassword(this.password.getText());
         dataLogin.setPort(Integer.parseInt(this.getPort().getText()));
@@ -97,6 +100,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         dataLogin.setUrl(this.url.getText());
         dataLogin.setUser(this.user.getText());
         dataLogin.setRememberMe(this.chkRememberMe.isSelected());
+
         try
         {
             FileOutputStream fileOut =

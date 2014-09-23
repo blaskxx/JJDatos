@@ -107,7 +107,7 @@
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#handleAutoLogin" text="AutoLogin" />
-                  <MenuItem mnemonicParsing="false" text="Growth Specification" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleGrowthConfiguration" text="Growth Specification" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

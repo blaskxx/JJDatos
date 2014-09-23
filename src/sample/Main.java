@@ -19,6 +19,8 @@ public class Main extends Application {
     public static String spmtServerFile="../View/EmailServerConfiguration.fxml";
     public static String autoLogin="autoLogin";
     public static String autoLoginFile="../View/AutoLogin.fxml";
+    public static String growthConfiguration="GrowthConfiguration";
+    public static String growthConfigurationFile="../View/GrowthConfiguration.fxml";
     public static ScreensController mainContainer;
 
 

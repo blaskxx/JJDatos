@@ -91,7 +91,7 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
         dataLogin.setAutoLogin(false);
         dataLogin.setNameService(this.serviceName.getText());
         dataLogin.setPassword(this.password.getText());
-        dataLogin.setPort(Integer.parseInt(this.getPort().getText()));
+        dataLogin.setPort(Integer.parseInt(port.getText()));
         dataLogin.setPrivilege(this.comboBox.getValue());
         dataLogin.setUrl(this.url.getText());
         dataLogin.setUser(this.user.getText());
@@ -138,6 +138,7 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
 
     @FXML
     private void handleOk(){
+        writeLoginFile();
         PGI_loading.setVisible(true);
         Runnable r = ()-> {
             Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
@@ -170,46 +171,6 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
         CpuTimeSeries.getInstance().stopThread();
     }
 
-    public TextField getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(TextField serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public TextField getUrl() {
-        return url;
-    }
-
-    public void setUrl(TextField url) {
-        this.url = url;
-    }
-
-    public TextField getPort() {
-        return port;
-    }
-
-    public void setPort(TextField port) {
-        this.port = port;
-    }
-
-    public TextField getPassword() {
-        return password;
-    }
-
-    public void setPassword(TextField password) {
-        this.password = password;
-    }
-
-    public TextField getUser() {
-        return user;
-    }
-
-    public void setUser(TextField user) {
-        this.user = user;
-    }
-
     //TODO encriptar al escribir la clave.
     private boolean checkInitiation(){
 
@@ -233,9 +194,7 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
             String usertxt = user.getText();
             if(isS) usertxt+=" as sysdba";
 
-            if(chkAutoLogin.isSelected()){
-                writeLoginFile();
-            }
+
             return true;
 
         }

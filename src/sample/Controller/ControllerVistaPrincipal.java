@@ -63,6 +63,17 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
     private ScheduledExecutorService ex;
 
     @FXML
+    public void handleGrowthConfiguration(){
+        Runnable r = ()-> {
+            Main.mainContainer.loadScreen(Main.growthConfiguration, Main.growthConfigurationFile);
+            if (!myController.setScreen(Main.growthConfiguration)) {
+                System.out.println("Imposible to charge the screen");
+            }
+        };
+        new Thread(r).start();
+    }
+
+    @FXML
     public void handleConfigurationEmailDBA(){
         Runnable r = ()-> {
             Main.mainContainer.loadScreen(Main.emailConfig, Main.emailConfigFile);
