@@ -1,13 +1,19 @@
 package sample.Model.entities;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.Model.access.tablespace.TableSpaceAccess;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Created by Casa on 14/09/2014.
  */
 public class TableSpace {
     StringProperty name = new SimpleStringProperty();
-    StringProperty file = new SimpleStringProperty();
     BooleanProperty autoIncrement = new SimpleBooleanProperty();
     FloatProperty size = new SimpleFloatProperty();
     FloatProperty maxSize = new SimpleFloatProperty();
@@ -16,10 +22,44 @@ public class TableSpace {
     FloatProperty Increase =new SimpleFloatProperty();
     FloatProperty pctFree=new SimpleFloatProperty();
 
-    public TableSpace(String name, String file, Boolean autoIncrement, Float size, Float maxSize, Float used,
+    static boolean stop = false;
+    public static List<TableSpace> tableSpaceList = new ArrayList<>();
+    static ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
+    static Runnable tableSpacesRetriever;
+
+    public static void begin(){
+        tableSpaceList = TableSpaceAccess.retrieveTableSpaces();
+        tableSpacesRetriever = ()->{
+            try {
+                if (stop) return;
+                List<TableSpace> l = TableSpaceAccess.retrieveTableSpaces();
+                tableSpaceList.clear();
+                tableSpaceList.addAll(l);
+            }catch (Exception e){ e.printStackTrace();}
+
+        };
+        executor.scheduleAtFixedRate(tableSpacesRetriever,5,5,TimeUnit.MINUTES);
+    }
+    public static void end() throws InterruptedException {
+        stop = true;
+        executor.awaitTermination(100, TimeUnit.MILLISECONDS);
+        executor.shutdown();
+    }
+
+    public ObservableList getTables() {
+        return tables;
+    }
+
+    public void setTables(ObservableList tables) {
+        this.tables = tables;
+    }
+
+    ObservableList tables = FXCollections.observableList(new ArrayList<>());
+
+    public TableSpace(String name, Boolean autoIncrement, Float size, Float maxSize, Float used,
                       Float free, Float increase, Float pctFree) {
         this.name.set(name);
-        this.file.set(file);
+
         this.autoIncrement.set(autoIncrement);
         this.size.set(size);
         this.maxSize.set(maxSize);
@@ -39,18 +79,6 @@ public class TableSpace {
 
     public void setName(String name) {
         this.name.set(name);
-    }
-
-    public String getFile() {
-        return file.get();
-    }
-
-    public StringProperty fileProperty() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file.set(file);
     }
 
     public boolean getAutoIncrement() {

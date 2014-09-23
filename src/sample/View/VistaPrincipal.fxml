@@ -25,7 +25,6 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <TableView fx:id="tableSpaceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
@@ -34,19 +33,10 @@
                               <TableColumn fx:id="TBC_Size" prefWidth="75.0" text="Tamaño" />
                               <TableColumn fx:id="TBC_used" prefWidth="75.0" text="Usado(MB)" />
                               <TableColumn fx:id="TBC_free" prefWidth="75.0" text="Libre(MB)" />
-                              <TableColumn fx:id="TBC_file" prefWidth="75.0" text="Archivo" />
-                              <TableColumn fx:id="TBC_auto" prefWidth="104.0" text="AutoExtendible" />
                               <TableColumn fx:id="TBC_max" prefWidth="71.0" text="Maximo" />
-                              <TableColumn fx:id="TBC_grow" prefWidth="73.0" text="Crecimiento" />
                               <TableColumn fx:id="TBC_pfree" prefWidth="88.0" text="\% libre" />
                           </columns>
                         </TableView>
-                        <TextField GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" text="Search" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </content></Tab>

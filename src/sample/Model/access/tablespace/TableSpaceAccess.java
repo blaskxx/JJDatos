@@ -18,24 +18,24 @@ import java.util.List;
 public class TableSpaceAccess {
     public static ObservableList<TableSpace> tableSpaces;
 
-    public static ObservableList<TableSpace> getTableSpaces() {
-        return tableSpaces;
-    }
+   // public static ObservableList<TableSpace> getTableSpaces() {
+      //  return tableSpaces;
+    //}
     private static Connection connection;
     private static PreparedStatement pps;
 
     static {
         try {
             connection = ORCConnection.Instance().getOrcConnection();
-            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.file_name \"File name\",df.AUTOEXTENSIBLE \"Auto\", df.MAXBYTES \"MAX\", (df.INCREMENT_BY * 8192)/(1024*1024) \"grow\",df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\"from (select tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,file_name,AUTOEXTENSIBLE,MAXBYTES,INCREMENT_BY) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
+            String sql = "select df.tablespace_name \"Tablespace\",totalusedspace \"Used MB\",(df.totalspace - tu.totalusedspace) \"Free MB\", df.MAXBYTES \"MAX\", df.totalspace \"Total MB\",round(100 * ( (df.totalspace - tu.totalusedspace)/ df.totalspace)) \"Pct. Free\" from (select tablespace_name,SUM(MAXBYTES) MAXBYTES, round(sum(bytes) / 1048576) TotalSpace from dba_data_files group by tablespace_name,AUTOEXTENSIBLE) df,(select round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name from dba_segments group by tablespace_name) tu  where df.tablespace_name = tu.tablespace_name";
             pps = connection.prepareStatement(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public static void initializate(){
-        tableSpaces = FXCollections.observableList(retrieveTableSpaces());
-    }
+   // public static void initializate(){
+     //   tableSpaces = FXCollections.observableList(retrieveTableSpaces());
+    //}
     public static List<TableSpace> retrieveTableSpaces(){
         List<TableSpace> tableSpaces = new ArrayList<>();
         try{
@@ -46,13 +46,13 @@ public class TableSpaceAccess {
                 String name = rs.getString(1);
                 float used = rs.getBigDecimal(2).floatValue();
                 float free = rs.getBigDecimal(3).floatValue();
-                String file = rs.getString(4);
-                Boolean auto = rs.getString(5).equals("YES");
-                float max = rs.getBigDecimal(6).floatValue();
-                float increment = rs.getBigDecimal(7).floatValue();
-                float total = rs.getBigDecimal(8).floatValue();
-                float pctFree = rs.getBigDecimal(9).floatValue();
-                TableSpace tbs = new TableSpace(name,file,auto,total,max,used,free,increment,pctFree);
+               // String file = rs.getString(4);
+                //Boolean auto = rs.getString(4).equals("YES");
+                float max = rs.getBigDecimal(4).floatValue();
+                //float increment = rs.getBigDecimal(6).floatValue();
+                float total = rs.getBigDecimal(5).floatValue();
+                float pctFree = rs.getBigDecimal(6).floatValue();
+                TableSpace tbs = new TableSpace(name,true,total,max,used,free,0.0f,pctFree);
                 tableSpaces.add(tbs);
             }
             //rs.close();

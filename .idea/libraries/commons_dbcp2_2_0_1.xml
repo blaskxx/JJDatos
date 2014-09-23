@@ -2,6 +2,11 @@
   <library name="commons-dbcp2-2.0.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/commons-dbcp2-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool2-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/controlsfx-8.0.6_20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ojdbc6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
