@@ -40,7 +40,6 @@
                      </children>
                   </GridPane>
                </content></Tab>
-          <Tab text="Tables-Data" />
             <Tab text="Diagrams">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

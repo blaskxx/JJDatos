@@ -21,6 +21,32 @@ public class TableSpace {
     FloatProperty free= new SimpleFloatProperty();
     FloatProperty Increase =new SimpleFloatProperty();
     FloatProperty pctFree=new SimpleFloatProperty();
+    IntegerProperty limitFirst=new SimpleIntegerProperty();
+    IntegerProperty limitSecond=new SimpleIntegerProperty();
+
+    public int getLimitFirst() {
+        return limitFirst.get();
+    }
+
+    public IntegerProperty limitFirstProperty() {
+        return limitFirst;
+    }
+
+    public void setLimitFirst(int limitFirst) {
+        this.limitFirst.set(limitFirst);
+    }
+
+    public int getLimitSecond() {
+        return limitSecond.get();
+    }
+
+    public IntegerProperty limitSecondProperty() {
+        return limitSecond;
+    }
+
+    public void setLimitSecond(int limitSecond) {
+        this.limitSecond.set(limitSecond);
+    }
 
     static boolean stop = false;
     public static List<TableSpace> tableSpaceList = new ArrayList<>();
@@ -67,6 +93,8 @@ public class TableSpace {
         this.free.set(free);
         Increase.set(increase);
         this.pctFree.set(pctFree);
+        this.limitFirst.set(100);
+        this.limitSecond.set(100);
     }
 
     public String getName() {
