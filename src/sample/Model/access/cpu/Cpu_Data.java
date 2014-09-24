@@ -48,7 +48,7 @@ public class Cpu_Data {
         return null;
     }
     public static int cpu_count() throws SQLException {
-        int f = 0;
+        /*int f = 0;
         Date d = new Date(0);
         String s;
         if(ORCConnection.Instance().isInitialized()){
@@ -64,7 +64,7 @@ public class Cpu_Data {
             //rs.close();
            connection1.close();
            return f;
-        }
-        return 1;
+        }*/
+        return 2;
     }
 }

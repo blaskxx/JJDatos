@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../controlsfx-8.0.6.jar!/" />
+          <root url="jar://$USER_HOME$/controlsfx-8.0.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,18 +19,18 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../controlsfx-samples-8.0.6.jar!/" />
+          <root url="jar://$USER_HOME$/controlsfx-samples-8.0.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../../controlsfx-samples-8.0.6.jar!/" />
+          <root url="jar://$USER_HOME$/controlsfx-samples-8.0.6.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../javax.mail.jar!/" />
+          <root url="jar://$USER_HOME$/javax.mail.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -39,7 +39,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../ojdbc7.jar!/" />
+          <root url="jar://$USER_HOME$/ojdbc7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -48,7 +48,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../commons-dbcp2-2.0.1/commons-dbcp2-2.0.1.jar!/" />
+          <root url="jar://$USER_HOME$/commons-dbcp2-2.0.1/commons-dbcp2-2.0.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -57,7 +57,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../commons-logging-1.2/commons-logging-1.2.jar!/" />
+          <root url="jar://$USER_HOME$/commons-logging-1.2/commons-logging-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -66,12 +66,18 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../commons-pool2-2.2/commons-pool2-2.2.jar!/" />
+          <root url="jar://$USER_HOME$/commons-pool2-2.2/commons-pool2-2.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="ojdbc6" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="controlsfx-8.0.6_20" level="project" />
+    <orderEntry type="library" name="commons-pool2-2.2" level="project" />
+    <orderEntry type="library" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" name="commons-dbcp2-2.0.1" level="project" />
   </component>
 </module>
 
