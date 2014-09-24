@@ -93,33 +93,15 @@ public class ControllerGrowthConfiguration implements Initializable, ControlledS
 
         limit1.setCellValueFactory(e->e.getValue().limitFirstProperty().asString());
         limit1.setEditable(true);
-        limit1.setOnEditCommit(
-                event -> event.getRowValue().setLimitFirst(Integer.parseInt(event.getNewValue())));
-        limit1.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getLimitFirst())));
         limit1.setCellFactory(TextFieldTableCell.forTableColumn());
-        limit1.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TableSpace, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<TableSpace, String> event) {
-                try {
-                    event.getRowValue().setLimitFirst(Integer.parseInt(event.getNewValue()));
-                }catch(Exception e){
-                    System.out.println(e.toString());
-                }
-            }
-        });
-        
+        limit1.setOnEditCommit(e->e.getRowValue().setLimitFirst(Integer.parseInt(e.getNewValue())));
+        limit1.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getLimitFirst())));
+
         limit2.setCellValueFactory(e -> e.getValue().limitSecondProperty().asString());
         limit2.setCellFactory(TextFieldTableCell.forTableColumn());
-        limit2.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TableSpace, String>>() {
-            @Override
-            public void handle(TableColumn.CellEditEvent<TableSpace, String> event) {
-                try {
-                    event.getRowValue().setLimitSecond(Integer.parseInt(event.getNewValue()));
-                }catch(Exception e){
-                    System.out.println(event.getNewValue()+e.toString());
-                }
-            }
-        });
+        limit2.setOnEditCommit(e->e.getRowValue().setLimitSecond(Integer.parseInt(e.getNewValue())));
+        limit2.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getLimitSecond())));
+
 
         limit2.setEditable(true);
 
