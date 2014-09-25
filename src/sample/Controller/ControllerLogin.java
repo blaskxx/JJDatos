@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import org.controlsfx.dialog.Dialogs;
 import sample.Main;
+import sample.Model.FileManagement.CryptoException;
+import sample.Model.FileManagement.Encrypth;
 import sample.Model.FileManagement.LoginFile;
 import sample.cr.una.pesistence.access.ORCConnection;
 
@@ -58,8 +60,11 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
     private boolean readLoginFile(){
         LoginFile lf=null;
+        File encrypth=new File(pathArchiveLogin);
+        File deEncrypth= new File(pathArchiveLogin);
         try
         {
+            Encrypth.decrypt(Main.keyEncrypth,encrypth,deEncrypth);
             FileInputStream fileIn = new FileInputStream(pathArchiveLogin);
             System.out.println(fileIn.available());
             if(fileIn.available()>1){
@@ -68,13 +73,15 @@ public class ControllerLogin implements Initializable, ControlledScreen {
                 in.close();
                 fileIn.close();
                 dataLogin=lf;
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return true;
             }else{
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return false;
             }
 
 
-        }catch(IOException i)
+        }catch(CryptoException|IOException i)
         {
             i.printStackTrace();
             return false;
@@ -103,14 +110,17 @@ public class ControllerLogin implements Initializable, ControlledScreen {
 
         try
         {
-            FileOutputStream fileOut =
-                    new FileOutputStream(pathArchiveLogin);
+            File input=new File(pathArchiveLogin);
+            File output = new File(pathArchiveLogin);
+            FileOutputStream fileOut=new FileOutputStream(input);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(dataLogin);
             out.close();
             fileOut.close();
+            Encrypth.encrypt(Main.keyEncrypth,input,output);
+
             System.out.printf("Serialized data is saved in"+pathArchiveLogin);
-        }catch(IOException i)
+        }catch(CryptoException|IOException i)
         {
             i.printStackTrace();
         }
@@ -212,7 +222,7 @@ public class ControllerLogin implements Initializable, ControlledScreen {
         this.user = user;
     }
 
-//TODO encriptar al escribir la clave.
+
    private boolean checkInitiation(){
 
            String errors = "";

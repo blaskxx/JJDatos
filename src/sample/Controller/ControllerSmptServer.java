@@ -5,9 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Main;
-import sample.Model.FileManagement.EmailManagement;
-import sample.Model.FileManagement.LoginFile;
-import sample.Model.FileManagement.ServerInformation;
+import sample.Model.FileManagement.*;
 
 import java.io.*;
 import java.net.URL;
@@ -55,6 +53,8 @@ public class ControllerSmptServer implements Initializable, ControlledScreen {
     }
 
     private void writeFile(){
+        File input=new File(pathServiceInformation);
+        File output = new File(pathServiceInformation);
         ServerInformation si= new ServerInformation();
         si.setEmailAddress(headerEmail.getText());
         si.setPasswordAddress(password.getText());
@@ -66,8 +66,9 @@ public class ControllerSmptServer implements Initializable, ControlledScreen {
             out.writeObject(si);
             out.close();
             fileOut.close();
+            Encrypth.encrypt(Main.keyEncrypth, input, output);
             System.out.printf("Serialized data is saved in"+pathServiceInformation);
-        }catch(IOException i)
+        }catch(CryptoException |IOException i)
         {
             i.printStackTrace();
         }
@@ -75,8 +76,11 @@ public class ControllerSmptServer implements Initializable, ControlledScreen {
 
     private boolean readFile(){
         ServerInformation lf=null;
+        File encrypth=new File(pathServiceInformation);
+        File deEncrypth= new File(pathServiceInformation);
         try
         {
+            Encrypth.decrypt(Main.keyEncrypth, encrypth, deEncrypth);
             FileInputStream fileIn = new FileInputStream(pathServiceInformation);
             System.out.println(fileIn.available());
             if(fileIn.available()>1){
@@ -86,13 +90,15 @@ public class ControllerSmptServer implements Initializable, ControlledScreen {
                 fileIn.close();
                 headerEmail.setText(lf.getEmailAddress());
                 password.setText(lf.getPasswordAddress());
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return true;
             }else{
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return false;
             }
 
 
-        }catch(IOException i)
+        }catch(CryptoException|IOException i)
         {
             i.printStackTrace();
             return false;

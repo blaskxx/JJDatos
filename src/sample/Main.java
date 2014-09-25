@@ -22,6 +22,7 @@ public class Main extends Application {
     public static String growthConfiguration="GrowthConfiguration";
     public static String growthConfigurationFile="../View/GrowthConfiguration.fxml";
     public static ScreensController mainContainer;
+    public static final String keyEncrypth="Mary has one ca1";
 
 
 
@@ -46,4 +47,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    //TODO Abrir hilo para ver si exite información para pedir el tamaño del TableSpace
+    //TODO Poner hora de corte
+    //TODO arreglar interfaces
 }
