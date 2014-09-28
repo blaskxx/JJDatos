@@ -6,9 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerGrowthConfiguration">
-   <children>
-      <GridPane layoutX="21.0" layoutY="14.0" prefHeight="39.0" prefWidth="570.0">
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerGrowthConfiguration">
+   <center>
+      <GridPane prefHeight="322.0" prefWidth="567.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,7 +23,9 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="154.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="302.0" minHeight="10.0" prefHeight="273.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Cut-Hour:" GridPane.columnIndex="1" />
@@ -46,15 +49,40 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </TextField>
+            <TableView fx:id="tableGrowth" prefHeight="131.0" prefWidth="565.0" GridPane.columnSpan="10" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn fx:id="tbc_Name" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="limit1" prefWidth="75.0" text="First Limit" />
+                  <TableColumn fx:id="limit2" prefWidth="94.0" text="Second Limit" />
+               </columns>
+            </TableView>
+            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="2" />
          </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </GridPane>
-      <Button layoutX="348.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok" />
-      <Button layoutX="449.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
-      <TableView fx:id="tableGrowth" layoutX="14.0" layoutY="53.0" prefHeight="280.0" prefWidth="570.0">
-         <columns>
-            <TableColumn fx:id="tbc_Name" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="limit1" prefWidth="75.0" text="First Limit" />
-            <TableColumn fx:id="limit2" prefWidth="94.0" text="Second Limit" />
-         </columns></TableView>
-   </children>
-</AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

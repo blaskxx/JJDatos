@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import sample.Main;
 import sample.Model.FileManagement.ServerInformation;
 import sample.Model.entities.TableSpace;
@@ -38,6 +39,9 @@ public class ControllerGrowthConfiguration implements Initializable, ControlledS
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController=screenPage;
+        Stage stage= (Stage) screenPage.getScene().getWindow();
+        stage.setWidth(600);
+        stage.setHeight(400);
     }
 
     @Override

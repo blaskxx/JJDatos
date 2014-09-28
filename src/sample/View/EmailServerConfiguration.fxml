@@ -6,9 +6,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerSmptServer">
-   <children>
-      <GridPane layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="418.0">
+<BorderPane prefHeight="231.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerSmptServer">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,17 +30,33 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\@" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Label text="gmail.com" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" GridPane.columnIndex="4" GridPane.rowIndex="3" />
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </GridPane>
-      <HBox layoutX="199.0" layoutY="234.0" prefHeight="25.0" prefWidth="191.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
-         </children>
-      </HBox>
-   </children>
-</AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

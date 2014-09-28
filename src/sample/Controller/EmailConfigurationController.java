@@ -161,6 +161,7 @@ public class EmailConfigurationController implements Initializable,ControlledScr
     @Override
     public void setScreenParent(ScreensController screenPage) {
         mycontroller=screenPage;
+
     }
 
     @Override

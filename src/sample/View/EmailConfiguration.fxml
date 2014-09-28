@@ -6,9 +6,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EmailConfigurationController">
-   <children>
-      <GridPane hgap="10.0" layoutX="14.0" layoutY="14.0" prefHeight="201.0" prefWidth="402.0" vgap="10.0">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EmailConfigurationController">
+   <center>
+      <GridPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="106.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="84.0" />
@@ -20,6 +20,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -33,24 +34,45 @@
             <TextField fx:id="lastNameDBA" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
             <Label text="Status:" GridPane.rowIndex="4" />
             <Label fx:id="statusLabel" text="----" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handleDummyMsg" prefWidth="90.0" text="Test" GridPane.rowIndex="5" />
+            <HBox prefHeight="27.0" prefWidth="190.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
       </GridPane>
-      <HBox layoutX="226.0" layoutY="244.0" prefHeight="27.0" prefWidth="190.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="90.0" text="Ok">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="90.0" text="Cancel" />
-         </children>
-      </HBox>
-      <HBox layoutX="20.0" layoutY="244.0" prefHeight="27.0" prefWidth="90.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#handleDummyMsg" prefWidth="90.0" text="Test" />
-         </children>
-      </HBox>
-   </children>
-</AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

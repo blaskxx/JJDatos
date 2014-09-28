@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.Main;
 import sample.Model.FileManagement.*;
 
@@ -42,6 +43,9 @@ public class ControllerSmptServer implements Initializable, ControlledScreen {
     @Override
     public void setScreenParent(ScreensController screenPage) {
         mycontroller=screenPage;
+        Stage stage= (Stage) screenPage.getScene().getWindow();
+
+
     }
 
 

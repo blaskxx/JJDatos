@@ -147,18 +147,19 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
 
     @FXML
     private void handleOk(){
-        writeLoginFile();
-        PGI_loading.setVisible(true);
-        Runnable r = ()-> {
-            Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
-            if (!myController.setScreen(Main.screen2ID)) {
-                System.out.println("imposible Cargar La Pantalla 2");
-                PGI_loading.setVisible(false);
-            }
-        };
-        if (checkInitiation()) new Thread(r).start();
-        else PGI_loading.setVisible(false);
-
+        if(checkInitiation()) {
+            writeLoginFile();
+            PGI_loading.setVisible(true);
+            Runnable r = () -> {
+                Main.mainContainer.loadScreen(Main.screen2ID, Main.screen2File);
+                if (!myController.setScreen(Main.screen2ID)) {
+                    System.out.println("imposible Cargar La Pantalla 2");
+                    PGI_loading.setVisible(false);
+                }
+            };
+            if (checkInitiation()) new Thread(r).start();
+            else PGI_loading.setVisible(false);
+        }
 
     }
 
@@ -180,7 +181,7 @@ public class ControllerAutoLogin implements Initializable, ControlledScreen {
         CpuTimeSeries.getInstance().stopThread();
     }
 
-    //TODO encriptar al escribir la clave.
+
     private boolean checkInitiation(){
 
         String errors = "";
