@@ -42,6 +42,7 @@ public class LimitationProcess {
                 sb.append("Have the max limit "+e.getLimitSecond());
                 sb.append(" but the database already use "+e.getUsed());
                 sb.append(" so the database will autoextend.");
+                //TODO AUTOEXTEND ocupo el nombre del FILE!
 
                 if(em.send(email,array,"The database is in red state!",sb.toString())){
                     System.out.println("send");
