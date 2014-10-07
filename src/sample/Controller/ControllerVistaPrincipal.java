@@ -17,13 +17,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import sample.Main;
+import sample.Model.GrowthSpecification.GrowthTableContainer;
+import sample.Model.GrowthSpecification.LimitationProcess;
 import sample.Model.access.tablespace.TableSpaceAccess;
 import sample.Model.entities.TableSpace;
 import sample.Model.series.cpu.CpuTimeSeries;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
@@ -161,8 +166,11 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
        // Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(r,0,2, TimeUnit.SECONDS);
         ex = Executors.newSingleThreadScheduledExecutor();
         ex.scheduleAtFixedRate(r,0,5, TimeUnit.MINUTES);
+        chargeLimits();
+        lp= new LimitationProcess();
+        lp.handleThreads();
     }
-
+    LimitationProcess lp;
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
@@ -176,6 +184,7 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
         CpuTimeSeries.getInstance().stopThread();
         try{TableSpace.end();}catch (Exception e){}
         ex.shutdown();
+        lp.shutdownThreads();
     }
 
     @FXML void handleAutoLogin(){
@@ -186,5 +195,34 @@ public class ControllerVistaPrincipal implements Initializable, ControlledScreen
             }
         };
         new Thread(r).start();
+    }
+    final String pathFile="src\\FileMonitor\\limitGrowth.ser";
+    private boolean chargeLimits(){
+
+        try
+        {
+            FileInputStream fileIn = new FileInputStream(pathFile);
+
+            if(fileIn.available()>1){
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                GrowthTableContainer.container = (HashMap) in.readObject();
+
+                in.close();
+                fileIn.close();
+
+                return true;
+            }else{
+                return false;
+            }
+
+
+        }catch(IOException i)
+        {
+            i.printStackTrace();
+            return false;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

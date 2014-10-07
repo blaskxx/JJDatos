@@ -3,8 +3,13 @@ package sample.Model.entities;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Model.GrowthSpecification.GrowthTable;
+import sample.Model.GrowthSpecification.GrowthTableContainer;
 import sample.Model.access.tablespace.TableSpaceAccess;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -21,27 +26,31 @@ public class TableSpace {
     FloatProperty free= new SimpleFloatProperty();
     FloatProperty Increase =new SimpleFloatProperty();
     FloatProperty pctFree=new SimpleFloatProperty();
-    IntegerProperty limitFirst=new SimpleIntegerProperty();
-    IntegerProperty limitSecond=new SimpleIntegerProperty();
+    FloatProperty limitFirst=new SimpleFloatProperty();
+    FloatProperty limitSecond=new SimpleFloatProperty();
 
-    public int getLimitFirst() {
-        return limitFirst.get();
-    }
-
-    public IntegerProperty limitFirstProperty() {
-        return limitFirst;
-    }
-
-    public void setLimitFirst(int limitFirst) {
-        this.limitFirst.set(limitFirst);
-    }
-
-    public int getLimitSecond() {
+    public float getLimitSecond() {
         return limitSecond.get();
     }
 
-    public IntegerProperty limitSecondProperty() {
+    public FloatProperty limitSecondProperty() {
         return limitSecond;
+    }
+
+    public void setLimitSecond(float limitSecond) {
+        this.limitSecond.set(limitSecond);
+    }
+
+    public float getLimitFirst() {
+        return limitFirst.get();
+    }
+
+    public FloatProperty limitFirstProperty() {
+        return limitFirst;
+    }
+
+    public void setLimitFirst(float limitFirst) {
+        this.limitFirst.set(limitFirst);
     }
 
     public void setLimitSecond(int limitSecond) {
@@ -65,7 +74,11 @@ public class TableSpace {
 
         };
         executor.scheduleAtFixedRate(tableSpacesRetriever,5,5,TimeUnit.MINUTES);
+
     }
+
+
+
     public static void end() throws InterruptedException {
         stop = true;
         executor.awaitTermination(100, TimeUnit.MILLISECONDS);
@@ -93,8 +106,8 @@ public class TableSpace {
         this.free.set(free);
         Increase.set(increase);
         this.pctFree.set(pctFree);
-        this.limitFirst.set(100);
-        this.limitSecond.set(100);
+        this.limitFirst.set(0);
+        this.limitSecond.set(size);
     }
 
     public String getName() {
