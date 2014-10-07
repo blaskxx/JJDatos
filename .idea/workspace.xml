@@ -7,17 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/CutHour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/GrowthTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/GrowthTableContainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FileMonitor/cutDatabase.ser" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FileMonitor/limitGrowth.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller/ControllerGrowthConfiguration.java" afterPath="$PROJECT_DIR$/src/sample/Controller/ControllerGrowthConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller/ControllerVistaPrincipal.java" afterPath="$PROJECT_DIR$/src/sample/Controller/ControllerVistaPrincipal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/View/GrowthConfiguration.fxml" afterPath="$PROJECT_DIR$/src/sample/View/GrowthConfiguration.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Model/entities/TableSpace.java" afterPath="$PROJECT_DIR$/src/sample/Model/entities/TableSpace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java" afterPath="$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java" afterPath="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FileMonitor/limitGrowth.ser" afterPath="$PROJECT_DIR$/src/FileMonitor/limitGrowth.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -84,52 +76,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="329" max-vertical-offset="867">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerGrowthConfiguration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerGrowthConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.642857" vertical-offset="465" max-vertical-offset="3808">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setScreenParent#0;class#ControllerGrowthConfiguration#0" expanded="false" />
-                <element signature="method#writeFile2#0;class#ControllerGrowthConfiguration#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LimitationProcess.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7159904" vertical-offset="992" max-vertical-offset="2108">
-              <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#542#543#0" expanded="true" />
-                <element signature="e#3037#3038#0" expanded="true" />
-                <element signature="e#3086#3087#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ControllerVistaPrincipal.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerVistaPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.285714" vertical-offset="2074" max-vertical-offset="3400">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2046" max-vertical-offset="3400">
               <caret line="168" column="23" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailManagement.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2295">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding>
+                <element signature="e#741#742#0" expanded="true" />
+                <element signature="e#780#781#0" expanded="true" />
+                <element signature="e#2094#2095#0" expanded="true" />
+                <element signature="e#2122#2123#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerSmptServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerSmptServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1307" max-vertical-offset="2159">
+              <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="113" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3583#3584#0" expanded="true" />
+                <element signature="e#3609#3610#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,37 +118,13 @@
       <file leaf-file-name="EmailConfigurationController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller/EmailConfigurationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1887">
-              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1887">
+              <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="49" selection-end-column="13" />
               <folding>
                 <element signature="method#setEmail#0;class#EmailConfigurationController#0" expanded="false" />
                 <element signature="method#saveEmail#0;class#EmailConfigurationController#0" expanded="false" />
                 <element signature="method#handleCancel#0;class#EmailConfigurationController#0" expanded="false" />
                 <element signature="method#isInputValid#0;class#EmailConfigurationController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrowthTable.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/GrowthSpecification/GrowthTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1105">
-              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#609#610#0" expanded="true" />
-                <element signature="e#642#643#0" expanded="true" />
-                <element signature="e#693#694#0" expanded="true" />
-                <element signature="e#737#738#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#808#809#0" expanded="true" />
-                <element signature="e#861#862#0" expanded="true" />
-                <element signature="e#907#908#0" expanded="true" />
-                <element signature="e#943#944#0" expanded="true" />
-                <element signature="e#975#976#0" expanded="true" />
-                <element signature="e#1025#1026#0" expanded="true" />
-                <element signature="e#1067#1068#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -201,12 +158,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="limitGrowth.ser" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FileMonitor/limitGrowth.ser">
+      <file leaf-file-name="LimitationProcess.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.7708831" vertical-offset="442" max-vertical-offset="2380">
+              <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
+                <element signature="e#542#543#0" expanded="true" />
+                <element signature="e#3688#3689#0" expanded="true" />
+                <element signature="e#3737#3738#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -254,7 +217,6 @@
         <option value="$PROJECT_DIR$/src/sample/View/EmailConfiguration.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ScreensController.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/FileManagement/ServerInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java" />
         <option value="$PROJECT_DIR$/src/sample/View/AutoLogin.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Model/access/tablespace/TableSpaceAccess.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/access/cpu/Cpu_Data.java" />
@@ -262,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/sample/Model/FileManagement/Encrypth.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ControllerLogin.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ControllerAutoLogin.java" />
-        <option value="$PROJECT_DIR$/src/sample/Controller/ControllerSmptServer.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/EmailConfigurationController.java" />
         <option value="$PROJECT_DIR$/src/sample/noooo.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/GrowthTableContainer.java" />
@@ -274,6 +235,9 @@
         <option value="$PROJECT_DIR$/src/sample/Model/entities/TableSpace.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ControllerGrowthConfiguration.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ControllerVistaPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/FileMonitor/serverConfiguration.ser" />
+        <option value="$PROJECT_DIR$/src/sample/Controller/ControllerSmptServer.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java" />
       </list>
     </option>
@@ -1001,7 +965,11 @@
       <created>1411874922737</created>
       <updated>1411874922737</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Limites hechos amarillo y rojos">
+      <created>1412665315938</created>
+      <updated>1412665315938</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1121,7 +1089,8 @@
     <MESSAGE value="RememberMeFile part 2" />
     <MESSAGE value="Archivos Encriptados" />
     <MESSAGE value="Ventanas arregladas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ventanas arregladas" />
+    <MESSAGE value="Limites hechos amarillo y rojos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Limites hechos amarillo y rojos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1256,13 +1225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileMonitor/smptServerConfiguration.ser">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/View/VistaPrincipal.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31407034" vertical-offset="1626" max-vertical-offset="2329">
@@ -1284,20 +1246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16346154" vertical-offset="357" max-vertical-offset="1700">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileMonitor/serverConfiguration.ser">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/FileManagement/ServerInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19362187" vertical-offset="34" max-vertical-offset="697">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1373,17 +1321,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerSmptServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="511" max-vertical-offset="1547">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#readFile#0;class#ControllerSmptServer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/cr/una/pesistence/access/ORCConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6340326" vertical-offset="663" max-vertical-offset="1853">
@@ -1446,35 +1383,6 @@
         <state vertical-scroll-proportion="0.49625936" vertical-offset="379" max-vertical-offset="1326">
           <caret line="34" column="23" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileMonitor/emailDBA.ser">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040572792" vertical-offset="0" max-vertical-offset="419">
-          <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1305419" vertical-offset="1037" max-vertical-offset="2057">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller/EmailConfigurationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1887">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="71" />
-          <folding>
-            <element signature="method#setEmail#0;class#EmailConfigurationController#0" expanded="false" />
-            <element signature="method#saveEmail#0;class#EmailConfigurationController#0" expanded="false" />
-            <element signature="method#handleCancel#0;class#EmailConfigurationController#0" expanded="false" />
-            <element signature="method#isInputValid#0;class#EmailConfigurationController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1544,8 +1452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerGrowthConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.642857" vertical-offset="465" max-vertical-offset="3808">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="56" />
+        <state vertical-scroll-proportion="-12.75" vertical-offset="1292" max-vertical-offset="3808">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setScreenParent#0;class#ControllerGrowthConfiguration#0" expanded="false" />
@@ -1554,24 +1462,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileMonitor/emailDBA.ser">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileMonitor/smptServerConfiguration.ser">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FileMonitor/serverConfiguration.ser">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="419">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerVistaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.285714" vertical-offset="2074" max-vertical-offset="3400">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2046" max-vertical-offset="3400">
           <caret line="168" column="23" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FileManagement/ServerInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26923078" vertical-offset="0" max-vertical-offset="697">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller/ControllerSmptServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1307" max-vertical-offset="2159">
+          <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="113" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3583#3584#0" expanded="true" />
+            <element signature="e#3609#3610#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller/EmailConfigurationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1887">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="method#setEmail#0;class#EmailConfigurationController#0" expanded="false" />
+            <element signature="method#saveEmail#0;class#EmailConfigurationController#0" expanded="false" />
+            <element signature="method#handleCancel#0;class#EmailConfigurationController#0" expanded="false" />
+            <element signature="method#isInputValid#0;class#EmailConfigurationController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FileManagement/EmailManagement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2295">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2122#2123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/GrowthSpecification/LimitationProcess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7159904" vertical-offset="992" max-vertical-offset="2108">
-          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.7708831" vertical-offset="442" max-vertical-offset="2380">
+          <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#515#516#0" expanded="true" />
             <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#3037#3038#0" expanded="true" />
-            <element signature="e#3086#3087#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
+            <element signature="e#3737#3738#0" expanded="true" />
           </folding>
         </state>
       </provider>

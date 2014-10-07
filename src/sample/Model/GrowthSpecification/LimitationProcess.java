@@ -24,34 +24,50 @@ public class LimitationProcess {
 
     private void checkLimites(){
         EmailManagement em= new EmailManagement();
-        String[] receptor = new String[0];
 
-        System.out.println(emailDBA.getFirstNameDBA()+"@"+emailDBA.getSecondNameDBA());
+
+
+
+        System.out.println(emailDBA.getHeaderEmailDBA()+"@"+emailDBA.getBodyEmailDBA());
         TableSpace.tableSpaceList.forEach(e->{
 
             if(GrowthTableContainer.container.get(e.getName()).secondLimit<=e.getUsed()){
-                receptor[0]=emailDBA.getFirstNameDBA()+"@"+emailDBA.getSecondNameDBA();
+                String aux=emailDBA.getHeaderEmailDBA()+"@"+emailDBA.getBodyEmailDBA();
+                String[] array={aux};
+                String email=em.getEmail()+"@gmail.com";
                 StringBuilder sb= new StringBuilder();
+                sb.append("Ms/Sr "+emailDBA.getFirstNameDBA()+" "+emailDBA.getSecondNameDBA()+"\n");
                 sb.append("The database is on red state\n");
                 sb.append("The table "+e.getName()+"\n");
                 sb.append("Have the max limit "+e.getLimitSecond());
                 sb.append(" but the database already use "+e.getUsed());
                 sb.append(" so the database will autoextend.");
 
-                em.send("pablomadrigaless@gmail.com",receptor,"The database is on red state!",sb.toString());
+                if(em.send(email,array,"The database is in red state!",sb.toString())){
+                    System.out.println("send");
+                }else{
+                    System.out.println("error sending");
+                }
 
             }else if(GrowthTableContainer.container.get(e.getName()).firstLimit<=e.getUsed()){
 
-                receptor[0]=emailDBA.getFirstNameDBA()+"@"+emailDBA.getSecondNameDBA();
+                String aux=emailDBA.getHeaderEmailDBA()+"@"+emailDBA.getBodyEmailDBA();
+                String[] array={aux};
+                String email=em.getEmail()+"@gmail.com";
 
                 StringBuilder sb= new StringBuilder();
+                sb.append("Ms/Sr "+emailDBA.getFirstNameDBA()+" "+emailDBA.getSecondNameDBA()+"\n");
                 sb.append("The database is on yellow state\n");
                 sb.append("The table "+e.getName()+"\n");
                 sb.append("Have the max limit "+e.getLimitSecond());
                 sb.append(" but the database already use "+e.getUsed());
                 sb.append(" so we recommend to autoextend manually.");
-
-                em.send("pablomadrigaless@gmail.com",receptor,"The database is on yellow state!",sb.toString());
+                System.out.println(em.getEmail());
+                if(em.send(email,array,"The database is in yellow state!",sb.toString())){
+                    System.out.println("send");
+                }else{
+                    System.out.println("error sending");
+                }
             }
         });
     }

@@ -1,10 +1,13 @@
 package sample.Model.FileManagement;
 
+import sample.Main;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,23 +28,30 @@ public class EmailManagement {
     }
     public boolean loadServerInformation(){
 
+        File encrypth=new File(pathServiceInformation);
+        File deEncrypth= new File(pathServiceInformation);
         try
         {
+            Encrypth.decrypt(Main.keyEncrypth, encrypth, deEncrypth);
             FileInputStream fileIn = new FileInputStream(pathServiceInformation);
             System.out.println(fileIn.available());
             if(fileIn.available()>1){
                 ObjectInputStream in = new ObjectInputStream(fileIn);
                 serverInformation = (ServerInformation) in.readObject();
+                email=serverInformation.getEmailAddress();
+                password=serverInformation.getPasswordAddress();
                 in.close();
                 fileIn.close();
 
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return true;
             }else{
+                Encrypth.encrypt(Main.keyEncrypth,deEncrypth,encrypth);
                 return false;
             }
 
 
-        }catch(IOException i)
+        }catch(CryptoException|IOException i)
         {
             i.printStackTrace();
             return false;
@@ -72,13 +82,15 @@ public class EmailManagement {
     public boolean send(String from, String[] recipientsTo, String subject, String body) {
 
         try {
+
             Properties properties = System.getProperties();
-            setMailServerProperties("pablomadrigaless@gmail.com", "relojmierda123", host, properties);
+            setMailServerProperties(this.email+"@gmail.com", this.password, host, properties);
 
             Session session = Session.getInstance(properties,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication("pablomadrigaless@gmail.com", "relojmierda123");
+
+                            return new PasswordAuthentication(email+"@gmail.com", password);
                         }
                     });
 
@@ -99,6 +111,7 @@ public class EmailManagement {
             message.setContent(multipart);
 
             Transport.send(message);
+
             return true;
         } catch (MessagingException e) {
             e.printStackTrace();
