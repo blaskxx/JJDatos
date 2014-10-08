@@ -57,6 +57,8 @@ public class TableSpace {
         this.limitSecond.set(limitSecond);
     }
 
+
+    //..
     static boolean stop = false;
     public static List<TableSpace> tableSpaceList = new ArrayList<>();
     static ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
@@ -94,6 +96,8 @@ public class TableSpace {
     }
 
     ObservableList tables = FXCollections.observableList(new ArrayList<>());
+
+    //---------------------
 
     public TableSpace(String name, Boolean autoIncrement, Float size, Float maxSize, Float used,
                       Float free, Float increase, Float pctFree) {

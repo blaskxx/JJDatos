@@ -12,7 +12,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane fx:id="mainPane" minHeight="544.0" minWidth="702.0" prefHeight="544.0" prefWidth="702.0" stylesheets="@CSS/darktheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerVistaPrincipal">
+<BorderPane fx:id="mainPane" minHeight="544.0" minWidth="702.0" prefHeight="544.0" prefWidth="1141.0" stylesheets="@CSS/darktheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ControllerVistaPrincipal">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -84,6 +84,39 @@
                         </Accordion>
                      </children></AnchorPane>
               </content>
+            </Tab>
+            <Tab text="Users">
+               <content>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="384.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="153.0" minHeight="0.0" prefHeight="2.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TableView fx:id="tableUsersView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
+                          <columns>
+                            <TableColumn fx:id="TBC_USERNAME" prefWidth="75.0" text="User_Name" />
+                            <TableColumn fx:id="TBC_USERID" prefWidth="75.0" text="User_Id" />
+                              <TableColumn fx:id="TBC_PASSWORD" prefWidth="75.0" text="Password" />
+                              <TableColumn fx:id="TBC_ACCOUNTSTATUS" prefWidth="98.0" text="Account_Status" />
+                              <TableColumn fx:id="TBC_LOCKDATE" prefWidth="77.0" text="Lock_date" />
+                              <TableColumn fx:id="TBC_EXPIRYDATE" prefWidth="94.0" text="Expiry_date" />
+                              <TableColumn fx:id="TBC_DEFAULTTABLESPACE" prefWidth="107.0" text="DefaultTableSpace" />
+                              <TableColumn fx:id="TBC_TEMPORARYTABLESPACE" prefWidth="127.0" text="TemporaryTableSpace" />
+                              <TableColumn fx:id="TBC_CREATED" prefWidth="63.0" text="Created" />
+                              <TableColumn fx:id="TBC_PROFILE" prefWidth="55.0" text="Profile" />
+                              <TableColumn fx:id="TBC_INICIAL" prefWidth="178.0" text="INITIAL_RSRC_CONSUMER_GROUP" />
+                              <TableColumn fx:id="TBC_EXTERNAL" prefWidth="103.0" text="EXTERNAL_NAME" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </GridPane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>
